@@ -4,5 +4,6 @@
 *.xml
 env
 /media/
-fabfile.pyc
+*.pyc
 .vscode
+requiments.txt
