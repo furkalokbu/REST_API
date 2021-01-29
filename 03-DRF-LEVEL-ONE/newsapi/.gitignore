@@ -1,0 +1,9 @@
+
+*.pyc
+*.iml
+*.xml
+env
+/media/
+*.pyc
+.vscode
+requiments.txt
