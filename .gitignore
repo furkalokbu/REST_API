@@ -7,3 +7,4 @@ env
 *.pyc
 .vscode
 requiments.txt
+.vscode/settings.json
