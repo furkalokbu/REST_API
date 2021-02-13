@@ -9,7 +9,7 @@ from profiles.api.serializers import (
     ProfileSerializer,
     ProfileStatusSerializer,
 )
-from profiles.api.permissions import IsOwnerProfileOrReadOnly, IsOwnerOrReadOnly
+from profiles.api.permissions import IsOwnProfileOrReadOnly, IsOwnerOrReadOnly
 
 
 class AvatarUpdateView(generics.UpdateAPIView):
@@ -17,7 +17,7 @@ class AvatarUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        profile_object = self.request.user
+        profile_object = self.request.user.profile
         return profile_object
 
 
@@ -29,14 +29,13 @@ class ProfileViewSet(
 ):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated, IsOwnerProfileOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnProfileOrReadOnly]
     filter_backends = [SearchFilter]
     search_fields = ["city"]
 
 
 class ProfileStatusViewSet(ModelViewSet):
 
-    # queryset = ProfileStatus.objects.all()
     serializer_class = ProfileStatusSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
