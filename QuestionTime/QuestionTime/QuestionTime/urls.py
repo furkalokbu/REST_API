@@ -1,7 +1,8 @@
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django_registration.backends.one_step.views import RegistrationView
-from users.forms import CustomuserForm, RegistrationForm
+from core.views import IndexTemplateView, TemplateView
+from users.forms import CustomuserForm
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -18,4 +19,5 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/rest-auth/", include("rest_auth.urls")),
     path("api/rest-auth/registration/", include("rest_auth.registration.urls")),
+    re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
 ]
