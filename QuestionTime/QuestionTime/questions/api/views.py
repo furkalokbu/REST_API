@@ -68,8 +68,9 @@ class AnswerLikeAPIView(APIView):
 
         serializer_context = {"request": request}
         serializer_context = self.serializer_class(answer, context=serializer_context)
+        serializer = self.serializer_class(Answer, context=serializer_context)
 
-        return Response()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, pk):
         answer = get_object_or_404(Answer, pk=pk)
