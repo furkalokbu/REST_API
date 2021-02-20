@@ -2,14 +2,14 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django_registration.backends.one_step.views import RegistrationView
 from core.views import IndexTemplateView, TemplateView
-from users.forms import CustomuserForm
+from users.forms import CustomUserForm
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(
-        "accounts/register",
+        "accounts/register/",
         RegistrationView.as_view(
-            form_class=CustomuserForm,
+            form_class=CustomUserForm,
             success_url="/",
         ),
         name="django_registration_register",

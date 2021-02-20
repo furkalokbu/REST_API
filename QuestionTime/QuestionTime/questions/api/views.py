@@ -29,7 +29,6 @@ class AnswerCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         request_user = self.request.user
         kwargs_slug = self.kwargs.get("slug")
-        print(self.kwargs)
         question = get_object_or_404(Question, slug=kwargs_slug)
 
         if question.answers.filter(author=request_user).exists():
