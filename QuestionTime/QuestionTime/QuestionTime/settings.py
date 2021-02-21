@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "users",
     "crispy_forms",
+    "webpack_loader",
     "questions",
 ]
 
@@ -148,4 +149,11 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 2,
+}
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "dist/",
+        "STATS_FILE": os.path.join(BASE_DIR, "frontend", "webpack-stats.json"),
+    }
 }
