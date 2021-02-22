@@ -1,26 +1,31 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light my-navbar">
+    <div class="container">
+                <router-link
+                    :to="{ name: 'Home' }"
+                    class="navbar-brand"
+                >QuestionTime
+                </router-link>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <router-link
+                    :to="{ name: 'Home' }"
+                    class="btn btn-sm btn-success"
+                >Home
+                </router-link>
+            </li>
+            <li class="nav-item mx-1">
+                <router-link
+                    :to="{ name: 'About' }"
+                    class="btn btn-sm btn-danger"
+                >About
+                </router-link>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="btn btn-sm btn-outline-secondary" href="/accounts/logout/">Logout</a>
             </li>
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
         </div>
     </div>
     </nav>  
@@ -31,5 +36,14 @@ export default {
 }
 </script>
 <style scoped>
-
+    .my-navbar {
+        border-bottom: 1px solid #DDD;
+    }
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 130%;
+    }
+    .navbar-brand:hover {
+        color: #DC3545 !important;
+    }
 </style>
