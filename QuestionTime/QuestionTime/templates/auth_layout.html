@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+{% extends "base.html" %}
+{% block style %}
+
     <title>Question Time</title>
     <style>
         html, body {
@@ -32,17 +27,14 @@
             margin-top: 100px;
         }
     </style>
-</head>
-<body>
 
-    <div class="outer-area">
-        <div class="auth-box text-center">
-            {% block content %}
+{% endblock %}
 
-            {% endblock %}
-        </div>
+{% block content %}
+<div class="outer-area">
+    <div class="auth-box text-center">
+        {% block auth %}
+        {% endblock %}
     </div>
-
-
-</body>
-</html>
+</div>
+{% endblock %}
