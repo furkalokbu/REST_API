@@ -19,7 +19,7 @@
                 <router-link
                     :to="{ name: 'About' }"
                     class="btn btn-sm btn-danger"
-                >About
+                >Add Question
                 </router-link>
             </li>
             <li class="nav-item">
