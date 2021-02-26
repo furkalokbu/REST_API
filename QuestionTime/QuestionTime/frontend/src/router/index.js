@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Question from "../views/Question.vue";
+import QuestionEditor from "../views/QuestionEditor.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     name: "question",
     component: Question,
     props: true
+  },
+  {
+    path: "/ask",
+    name: "question-editor",
+    component: QuestionEditor
   }
 ];
 
