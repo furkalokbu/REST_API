@@ -1,8 +1,13 @@
 import {CSRF_TOKEN} from "./csrf_token.js"
 
-async function getJSON(response) {
-    if (response.status === 204) return '';
-    return response.json()
+async function handleResponse(response) {
+    if (response.status === 204) {
+        return '';
+    } else if (response.status === 404) {
+        return null;
+    } else {
+        return response.json()
+    }
 }
 
 function apiService(endpoint, method, data) {
@@ -14,7 +19,7 @@ function apiService(endpoint, method, data) {
             'X-CSRFTOKEN': CSRF_TOKEN
         }
     };
-    return fetch(endpoint, config).then(getJSON).catch(error => console.log(error))
+    return fetch(endpoint, config).then(handleResponse).catch(error => console.log(error))
 }
 
 export {apiService};
