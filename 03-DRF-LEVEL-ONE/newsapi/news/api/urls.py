@@ -9,7 +9,7 @@ from news.api.views import (
 
 urlpatterns = [
     path("articles/", ArticleListCreateApiView.as_view(), name="article-list"),
-    path("articles/<int:pk>", ArticleDetailApiView.as_view(), name="article-detail"),
+    path("articles/<int:pk>/", ArticleDetailApiView.as_view(), name="article-detail"),
     path(
         "journalists/", JournalistListCreateAPIView.as_view(), name="journalists-list"
     ),

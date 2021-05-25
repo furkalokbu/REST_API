@@ -8,7 +8,7 @@ from news.models import Article, Journalist
 class ArticleSerializer(serializers.ModelSerializer):
 
     time_since_publication = serializers.SerializerMethodField()
-    # author = serializers.StringRelatedField()
+    author = serializers.StringRelatedField()
     # author = JournalistSerializer(read_only=True)
 
     class Meta:
