@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework import viewsets, mixins
 from profiles.models import Profile, ProfileStatus
 from profiles.api.serializers import (
@@ -10,6 +10,12 @@ from profiles.api.serializers import (
     ProfileStatusSerializer,
 )
 from profiles.api.permissions import IsOwnProfileOrReadOnly, IsOwnerOrReadOnly
+
+
+class ProfileViewSet(ReadOnlyModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class AvatarUpdateView(generics.UpdateAPIView):
@@ -21,17 +27,17 @@ class AvatarUpdateView(generics.UpdateAPIView):
         return profile_object
 
 
-class ProfileViewSet(
-    mixins.UpdateModelMixin,
-    mixins.ListModelMixin,
-    mixins.RetrieveModelMixin,
-    viewsets.GenericViewSet,
-):
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated, IsOwnProfileOrReadOnly]
-    filter_backends = [SearchFilter]
-    search_fields = ["city"]
+# class ProfileViewSet(
+#     mixins.UpdateModelMixin,
+#     mixins.ListModelMixin,
+#     mixins.RetrieveModelMixin,
+#     viewsets.GenericViewSet,
+# ):
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
+#     permission_classes = [IsAuthenticated, IsOwnProfileOrReadOnly]
+#     filter_backends = [SearchFilter]
+#     search_fields = ["city"]
 
 
 class ProfileStatusViewSet(ModelViewSet):
